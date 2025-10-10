@@ -1,0 +1,36 @@
+{
+  "name": "challenge4-technoready",
+  "version": "1.1.0",
+  "description": "MongoDB configuration and data import scripts for the Tattler project (Challenge 4 - Technoready)",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "create-indexes": "node scripts/indexes.js",
+    "import-data": "node scripts/importCsv.js",
+    "start": "echo 'No server yet - placeholder'"
+  },
+  "keywords": [
+    "mongodb",
+    "technoready",
+    "database",
+    "challenge4",
+    "tattler"
+  ],
+  "author": "Scar-AT",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.6.1",
+    "mongodb": "^6.20.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Scar-AT/Challenge4-technoready.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Scar-AT/Challenge4-technoready/issues"
+  },
+  "homepage": "https://github.com/Scar-AT/Challenge4-technoready#readme",
+  "directories": {
+    "doc": "docs"
+  }
+}
