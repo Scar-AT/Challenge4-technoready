@@ -29,21 +29,24 @@ All endpoints are functional and connected to the `ch4-nao` MongoDB database.
 ```json
 [
   {
-    "_id": "670b9d7f3e09e73c4df13b15",
-    "name": "La Parrilla Mexicana",
-    "borough": "Coyoacán",
-    "cuisine": "Mexican",
     "address": {
-      "building": "12",
-      "street": "Av. Miguel Ángel de Quevedo",
-      "zipcode": "04010"
-    }
+      "coord": []
+    },
+    "_id": "68e8aa59a4cb930421b195da",
+    "name": "Sol y Sazón",
+    "borough": "Mérida",
+    "cuisine": "Mexican",
+    "description": "Modern Yucatecan fusion with open-air dining",
+    "latitude": 20.967,
+    "longitude": -89.623,
+    "tags": "fine-dining;fusion;romantic",
+    "grades": []
   }
 ]
 ```
 
 **Postman Screenshot:**  
-📸 *Saved under `/docs/screenshots/get-restaurants.png`*
+📸 *Saved under `/docs/screenshots/GETreq-restaurant.png`*
 
 ---
 
@@ -59,17 +62,17 @@ All endpoints are functional and connected to the `ch4-nao` MongoDB database.
 ```json
 [
   {
-    "_id": "670ba1e03e09e73c4df13c02",
-    "user_id": "U001",
-    "name": "Daniel Smith",
-    "email": "daniel@example.com",
-    "role": "admin"
+    "role": "user",
+    "_id": "68e8aa59735913d7cd327946",
+    "username": "scarlett",
+    "email": "scarlett.ayon@tattler.com",
+    "createdAt": "2025-03-03T00:00:00.000Z"
   }
 ]
 ```
 
 **Postman Screenshot:**  
-📸 *Saved under `/docs/screenshots/get-users.png`*
+📸 *Saved under `/docs/screenshots/GET-req-users.png`*
 
 ---
 
@@ -81,9 +84,9 @@ All endpoints are functional and connected to the `ch4-nao` MongoDB database.
 **Request Body:**
 ```json
 {
-  "user_id": "U010",
-  "name": "Alice Walker",
-  "email": "alice@example.com",
+  "user_id": "U011",
+  "name": "Ana Lilia",
+  "email": "ana.lilia@tattler.com",
   "role": "tester"
 }
 ```
@@ -93,17 +96,18 @@ All endpoints are functional and connected to the `ch4-nao` MongoDB database.
 - **Body:**
 ```json
 {
-  "_id": "6710b44f92df2e00251b24ea",
-  "user_id": "U010",
-  "name": "Alice Walker",
-  "email": "alice@example.com",
+  "user_id": "U011",
+  "name": "Ana Lilia",
+  "email": "ana.lilia@tattler.com",
   "role": "tester",
+  "_id": "68f4743d205fd01456f81635",
+  "createdAt": "2025-10-19T05:16:45.530Z",
   "__v": 0
 }
 ```
 
 **Postman Screenshot:**  
-📸 *Saved under `/docs/screenshots/post-user.png`*
+📸 *Saved under `/docs/screenshots/POST-req-users.png`*
 
 ---
 
@@ -115,15 +119,21 @@ All endpoints are functional and connected to the `ch4-nao` MongoDB database.
 **Request Body:**
 ```json
 {
-  "restaurant_id": "R025",
-  "name": "Casa de las Enchiladas",
-  "borough": "Benito Juárez",
+  "restaurant_id": "R030",
+  "name": "El Jardín del Sabor",
+  "borough": "Oaxaca",
   "cuisine": "Mexican",
+  "description": "Authentic Oaxacan dishes with organic ingredients and traditional decor",
+  "latitude": 17.0732,
+  "longitude": -96.7266,
   "address": {
-    "building": "55",
-    "street": "Av. División del Norte",
-    "zipcode": "03000"
-  }
+    "building": "45",
+    "street": "Calle de Manuel García Vigil",
+    "zipcode": "68000",
+    "coord": [-96.7266, 17.0732]
+  },
+  "tags": "traditional;organic;family",
+  "grades": []
 }
 ```
 
@@ -132,22 +142,27 @@ All endpoints are functional and connected to the `ch4-nao` MongoDB database.
 - **Body:**
 ```json
 {
-  "_id": "6710b62e2f01a60029cd09bf",
-  "restaurant_id": "R025",
-  "name": "Casa de las Enchiladas",
-  "borough": "Benito Juárez",
+  "restaurant_id": "R030",
+  "name": "El Jardín del Sabor",
+  "borough": "Oaxaca",
   "cuisine": "Mexican",
   "address": {
-    "building": "55",
-    "street": "Av. División del Norte",
-    "zipcode": "03000"
+    "building": "45",
+    "street": "Calle de Manuel García Vigil",
+    "zipcode": "68000",
+    "coord": [
+      -96.7266,
+      17.0732
+    ]
   },
+  "grades": [],
+  "_id": "68f4b255da75c5b602eec795",
   "__v": 0
 }
 ```
 
 **Postman Screenshot:**  
-📸 *Saved under `/docs/screenshots/post-restaurant.png`*
+📸 *Saved under `/docs/screenshots/POST-req-restaurants.png`*
 
 ---
 
