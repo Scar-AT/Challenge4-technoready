@@ -1,142 +1,213 @@
-# 🍽️ Tattler API – MongoDB & Express Integration
+# 🍽️ Tattler API – Challenge 4 (Technoready / Digital NAO)
 
-**Tattler** is a restaurant directory application designed to offer users personalized culinary experiences across Mexico.  
-The system leverages **Node.js**, **Express**, and **MongoDB** to manage and query restaurant and user data efficiently through a RESTful API.
-
-This repository contains the backend implementation, database integration, and API routes for restaurant and user management.
+Tattler is a **Node.js + Express + MongoDB** RESTful API designed to manage restaurant and user data efficiently.  
+The project demonstrates full-stack backend development — from data import and indexing to full CRUD operations and advanced query features.
 
 ---
 
-## ⚙️ Installation and Usage
+## 🧭 Project Overview
 
-### 📦 Requirements
-- **Node.js** v18 or higher  
-- **MongoDB Server** v8.2 or compatible  
-- **MongoDB Database Tools** *(for `mongoimport` and `mongodump`)*  
-- **MongoDB Compass** *(optional for GUI visualization)*
-
----
-
-### 🪜 Setup Steps
-
-1. **Clone this repository**
-   ```bash
-   git clone https://github.com/Scar-AT/Challenge4-technoready.git
-   cd Challenge4-technoready
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Configure environment variables**
-   Create a file named `.env` in the root directory and define:
-   ```env
-   MONGO_URI=mongodb://127.0.0.1:27017
-   DB_NAME=ch4-nao
-   PORT=4000
-   ```
-
-4. **Start MongoDB**
-   Make sure MongoDB is running locally:
-   ```bash
-   mongod
-   ```
-   Default URI: `mongodb://127.0.0.1:27017`
-
-5. **Import dataset**
-   Import the CSV data into MongoDB using the provided script:
-   ```bash
-   node scripts/importCsv.js
-   ```
-
-6. **Run the API server**
-   ```bash
-   node src/server.js
-   ```
-
-   Once running, you should see:
-   ```
-   ✅ Connected to database: ch4-nao
-   🟢 Server running on http://localhost:4000
-   ```
+| Focus | Main Deliverables |
+|:--|:--|
+| Database setup and connection | MongoDB configuration (`ch4-nao`), CSV import scripts, `.env` setup |
+| API development and structure | Express app, server configuration, routes for Restaurants and Users |
+| Advanced features + CRUD completion | Filtering, sorting, pagination, full CRUD for both collections, validation middleware, documentation |
 
 ---
 
-## 🧠 API Overview
+## ⚙️ Technologies Used
 
+- **Node.js** v18+
+- **Express.js** – Routing and middleware
+- **MongoDB** – NoSQL database
+- **Mongoose** – ODM for schema validation
+- **dotenv** – Environment configuration
+- **Postman** – API testing and validation
+- **MongoDB Compass** – Visual database management
+
+---
+
+## 🪜 Installation & Setup
+
+### 1️⃣ Clone this Repository
+```bash
+git clone https://github.com/Scar-AT/Challenge4-technoready.git
+cd Challenge4-technoready
+```
+
+### 2️⃣ Install Dependencies
+```bash
+npm install
+```
+
+### 3️⃣ Configure Environment Variables
+Create a file named `.env` in the root directory:
+
+```env
+MONGO_URI=mongodb://127.0.0.1:27017
+DB_NAME=ch4-nao
+```
+
+### 4️⃣ Import Sample Data
+Import the sample datasets provided under `/data`:
+
+```bash
+npm run import-data
+```
+
+*(requires MongoDB Database Tools for `mongoimport`)*
+
+### 5️⃣ Start the Server
+```bash
+node src/server.js
+```
+
+Server will start at:
+```
+http://localhost:4000
+```
+
+---
+
+## 🧩 API Endpoints Overview
+
+### 🏙️ **Restaurants**
 | Method | Endpoint | Description |
-|--------|-----------|-------------|
-| **GET** | `/api/restaurants` | Retrieve a list of restaurants |
-| **POST** | `/api/restaurants` | Add a new restaurant |
-| **GET** | `/api/users` | Retrieve all users |
-| **POST** | `/api/users` | Add a new user |
+|:--:|:--|:--|
+| GET | `/api/restaurants` | Retrieve all restaurants |
+| GET | `/api/restaurants/:id` | Retrieve one restaurant by ID |
+| POST | `/api/restaurants` | Add a new restaurant |
+| PUT | `/api/restaurants/:id` | Update a restaurant |
+| DELETE | `/api/restaurants/:id` | Remove a restaurant |
 
-### Example Request (POST `/api/users`)
+### 👥 **Users**
+| Method | Endpoint | Description |
+|:--:|:--|:--|
+| GET | `/api/users` | Retrieve all users |
+| GET | `/api/users/:id` | Retrieve one user by ID |
+| POST | `/api/users` | Add a new user |
+| PUT | `/api/users/:id` | Update a user |
+| DELETE | `/api/users/:id` | Remove a user |
+
+---
+
+## 🔍 Query Parameters (Advanced Search)
+
+| Parameter | Type | Description | Example |
+|------------|------|-------------|----------|
+| `name` | String | Filters restaurants whose names contain a term | `/api/restaurants?name=luna` |
+| `borough` | String | Filters restaurants by borough | `/api/restaurants?borough=tijuana` |
+| `cuisine` | String | Filters restaurants by cuisine type | `/api/restaurants?cuisine=asian` |
+| `sort` | String | Sort results ascending/descending | `/api/restaurants?sort=-name` |
+| `limit` | Number | Limit number of results per page | `/api/restaurants?limit=5` |
+| `page` | Number | Specify page for pagination | `/api/restaurants?limit=5&page=2` |
+
+---
+
+## 🧠 Example JSON (Restaurant)
 ```json
 {
-  "user_id": "U011",
-  "name": "Ana Lilia",
-  "email": "ana.lilia@tattler.com",
-  "role": "tester"
+  "restaurant_id": "R030",
+  "name": "El Jardín del Sabor",
+  "borough": "Oaxaca",
+  "cuisine": "Mexican",
+  "description": "Authentic Oaxacan dishes with organic ingredients and traditional decor",
+  "latitude": 17.0732,
+  "longitude": -96.7266,
+  "address": {
+    "building": "45",
+    "street": "Calle de Manuel García Vigil",
+    "zipcode": "68000",
+    "coord": [-96.7266, 17.0732]
+  },
+  "tags": "traditional;organic;family",
+  "grades": []
 }
 ```
 
 ---
 
-## 🗂️ Repository Structure
+## 🧪 Testing with Postman
+
+All API routes and CRUD operations were tested using **Postman**.  
+Screenshots of test results are available under:
+```
+docs/screenshots/
+```
+
+---
+
+## 📂 Repository Structure
+
 ```
 Challenge4-technoready/
-├── data/                       # CSV datasets for restaurants and users
+├── src/
+│   ├── app.js
+│   ├── server.js
+│   ├── controllers/
+│   │   ├── restaurant.controller.js
+│   │   └── user.controller.js
+│   ├── models/
+│   │   ├── restaurant.model.js
+│   │   └── user.model.js
+│   ├── routes/
+│   │   ├── restaurant.routes.js
+│   │   └── user.routes.js
+│   └── middlewares/
+│       └── validateObjectId.js
+│
+├── scripts/
+│   ├── connectDB.js
+│   ├── importCsv.js
+│   ├── indexes.js
+│   ├── testConnection.js
+│   ├── testRestaurants.js
+│   └── testUsers.js
+│
+├── data/
 │   ├── restaurants.csv
 │   └── users.csv
 │
-├── backup/                     # MongoDB database backups
-│   └── ch4-nao/
-│
-├── scripts/                    # Automation and utility scripts
-│   ├── connectDB.js
-│   ├── importCsv.js
-│   ├── checkRestaurantsCount.js
-│   └── checkUsersCount.js
-│
-├── src/
-│   ├── models/                 # Mongoose models
-│   │   ├── restaurant.model.js
-│   │   └── user.model.js
-│   ├── controllers/            # API controllers
-│   │   ├── restaurant.controller.js
-│   │   └── user.controller.js
-│   ├── routes/                 # API routes
-│   │   ├── restaurant.routes.js
-│   │   └── user.routes.js
-│   ├── app.js                  # Express app configuration
-│   └── server.js               # Server entry point
-│
-├── docs/                       # Documentation and screenshots
+├── docs/
+│   ├── postman-tests.md
+│   ├── query-parameters.md
+│   ├── sp3-postman-tests.md
 │   └── screenshots/
+│       ├── added-users.png
+│       ├── documents-mongoDB.png
+│       ├── filter-restaurant-borough.png
+│       ├── filter-restaurant-cuisine.png
+│       ├── filter-restaurant-name.png
+│       ├── GET-req-users.png
+│       ├── GETreq-restaurant.png
+│       ├── index-mongoDB.png
+│       ├── pagination-restaurant.png
+│       ├── POST-req-restaurants.png
+│       ├── POST-req-users.png
+│       ├── restaurants-mongoDB.png
+│       ├── server-running.png
+│       ├── sort-asc-restaurant-name.png
+│       ├── sort-desc-restaurant-name.png
+│       └── users-mongoDB.png
 │
-├── .env                        # Environment variables
-├── .gitignore                  # Ignored files and folders
-├── package.json                # Node.js configuration
-└── README.md                   # Project documentation
+├── .gitignore
+├── package.json
+└── README.md
 ```
 
 ---
 
-## 🧩 Versioning
+## 🧾 Versioning
 
-This project follows **Semantic Versioning** (`MAJOR.MINOR.PATCH`) to maintain clarity across releases.
+This project follows **Semantic Versioning** (`MAJOR.MINOR.PATCH`):
 
-| Component | Meaning | Example | When to change it |
-|------------|----------|----------|-------------------|
-| **MAJOR** | Breaking changes or new architecture | `v2.0.0` | API structure or database schema changes |
-| **MINOR** | New features or functionality | `v1.1.0` | Added endpoints, controllers, or automation scripts |
-| **PATCH** | Fixes or documentation updates | `v1.1.1` | Bug fixes, readme updates, or optimization |
-
-**Current version:** `v2.0.0`
+| Version | Description |
+|:--|:--|
+| `v1.0.0` | MongoDB setup and import scripts |
+| `v2.0.0` | Express API base, routes for Restaurants and Users |
+| `v3.0.0` | Final version – Full CRUD, validation middleware, query filters, documentation, and tests |
 
 ---
 
-**Maintained by:** [Scar-AT](https://github.com/Scar-AT)
+
+**Version:** `v3.0.0`  
