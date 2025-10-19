@@ -1,6 +1,6 @@
 # 🍽️ Tattler Database – MongoDB Setup
 
-Tattler is a restaurant directory application designed to offer users personalized culinary experiences across Mexico. The system leverages **MongoDB** as a non-relational database to manage and query restaurant and user data efficiently.
+ Tattler is a restaurant directory application designed to offer users personalized culinary experiences across Mexico. The system leverages **MongoDB** as a non-relational database to manage and query restaurant and user data efficiently.
 
 This repository contains the configuration, data import, indexing, and backup setup for the MongoDB database that serves as the foundation for future API and application development.
 

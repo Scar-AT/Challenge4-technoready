@@ -19,7 +19,9 @@
   "author": "Scar-AT",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.6.1",
+    "express": "^5.1.0",
     "mongodb": "^6.20.0",
     "mongoose": "^8.19.1"
   },
