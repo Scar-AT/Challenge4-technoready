@@ -1,12 +1,19 @@
 import express from "express";
-import { getRestaurants, addRestaurant } from "../controllers/restaurant.controller.js";
+import {
+  getRestaurants,
+  getRestaurantById,
+  addRestaurant,
+  updateRestaurant,
+  deleteRestaurant,
+} from "../controllers/restaurant.controller.js";
+import { validateObjectId } from "../middlewares/validateObjectId.js";
 
 const router = express.Router();
 
-// GET /api/restaurants
 router.get("/", getRestaurants);
-
-// POST /api/restaurants
+router.get("/:id", validateObjectId, getRestaurantById);
 router.post("/", addRestaurant);
+router.put("/:id", validateObjectId, updateRestaurant);
+router.delete("/:id", validateObjectId, deleteRestaurant);
 
 export default router;

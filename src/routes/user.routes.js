@@ -1,12 +1,19 @@
 import express from "express";
-import { getUsers, addUser } from "../controllers/user.controller.js";
+import {
+  getUsers,
+  getUserById,
+  addUser,
+  updateUser,
+  deleteUser,
+} from "../controllers/user.controller.js";
+import { validateObjectId } from "../middlewares/validateObjectId.js";
 
 const router = express.Router();
 
-// GET /api/users
 router.get("/", getUsers);
-
-// POST /api/users
+router.get("/:id", validateObjectId, getUserById);
 router.post("/", addUser);
+router.put("/:id", validateObjectId, updateUser);
+router.delete("/:id", validateObjectId, deleteUser);
 
 export default router;

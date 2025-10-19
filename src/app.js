@@ -20,4 +20,16 @@ app.get("/", (req, res) => {
 app.use("/api/restaurants", restaurantRoutes);
 app.use("/api/users", userRoutes);
 
+// 404 handler
+app.use((req, res) => {
+  res.status(404).json({ message: "Route not found" });
+});
+
+// Centralized error handler (optional usage: next(err) in controllers)
+app.use((err, _req, res, _next) => {
+  console.error("Unhandled error:", err);
+  res.status(500).json({ message: "Internal server error" });
+});
+
+
 export default app;
