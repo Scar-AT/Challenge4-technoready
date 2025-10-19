@@ -76,9 +76,9 @@ This repository contains the backend implementation, database integration, and A
 ### Example Request (POST `/api/users`)
 ```json
 {
-  "user_id": "U012",
-  "name": "Charlie Brown",
-  "email": "charlie.br@tattler.com",
+  "user_id": "U011",
+  "name": "Ana Lilia",
+  "email": "ana.lilia@tattler.com",
   "role": "tester"
 }
 ```
